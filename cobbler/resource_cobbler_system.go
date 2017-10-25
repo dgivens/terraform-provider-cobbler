@@ -6,9 +6,9 @@ import (
 	"log"
 	"sync"
 
+	cobbler "github.com/dgivens/cobblerclient"
 	"github.com/hashicorp/terraform/helper/hashcode"
 	"github.com/hashicorp/terraform/helper/schema"
-	cobbler "github.com/jtopjian/cobblerclient"
 )
 
 var systemSyncLock sync.Mutex

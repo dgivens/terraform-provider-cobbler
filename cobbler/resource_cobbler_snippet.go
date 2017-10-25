@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
+	cobbler "github.com/dgivens/cobblerclient"
 	"github.com/hashicorp/terraform/helper/schema"
-	cobbler "github.com/jtopjian/cobblerclient"
 )
 
 func resourceSnippet() *schema.Resource {

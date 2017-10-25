@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
+	cobbler "github.com/dgivens/cobblerclient"
 	"github.com/hashicorp/terraform/helper/schema"
-	cobbler "github.com/jtopjian/cobblerclient"
 )
 
 func resourceRepo() *schema.Resource {
@@ -104,8 +104,9 @@ func resourceRepo() *schema.Resource {
 			},
 
 			"yumopts": &schema.Schema{
-				Type:     schema.TypeString,
+				Type:     schema.TypeList,
 				Optional: true,
+				Elem:     &schema.Schema{Type: schema.TypeString},
 				Computed: true,
 			},
 		},
@@ -208,6 +209,11 @@ func buildRepo(d *schema.ResourceData, meta interface{}) cobbler.Repo {
 		rpmList = append(rpmList, i.(string))
 	}
 
+	yumOpts := []string{}
+	for _, i := range d.Get("yum_opts").([]interface{}) {
+		yumOpts = append(yumOpts, i.(string))
+	}
+
 	repo := cobbler.Repo{
 		AptComponents:   aptComponents,
 		AptDists:        aptDists,
@@ -223,7 +229,7 @@ func buildRepo(d *schema.ResourceData, meta interface{}) cobbler.Repo {
 		Owners:          owners,
 		Proxy:           d.Get("proxy").(string),
 		RpmList:         rpmList,
-		YumOpts:         d.Get("yumopts").(string),
+		YumOpts:         yumOpts,
 	}
 
 	return repo

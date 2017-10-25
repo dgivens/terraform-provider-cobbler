@@ -3,7 +3,7 @@ package cobbler
 import (
 	"net/http"
 
-	cobbler "github.com/jtopjian/cobblerclient"
+	cobbler "github.com/dgivens/cobblerclient"
 )
 
 type Config struct {

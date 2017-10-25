@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/dgivens/terraform-provider-cobbler/cobbler"
 	"github.com/hashicorp/terraform/plugin"
-	"github.com/terraform-providers/terraform-provider-cobbler/cobbler"
 )
 
 func main() {

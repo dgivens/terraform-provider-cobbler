@@ -5,8 +5,8 @@ import (
 	"log"
 	"strings"
 
+	cobbler "github.com/dgivens/cobblerclient"
 	"github.com/hashicorp/terraform/helper/schema"
-	cobbler "github.com/jtopjian/cobblerclient"
 )
 
 func resourceProfile() *schema.Resource {
